@@ -1,26 +1,40 @@
 const request = require('request');
 const express = require('express');
-const bodyPaser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
 
-app.set('port',(process.env.PORT || 5000));
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
 
-app.use(bodyPaser.urlencoded({extended : false}));
-app.use(bodyPaser.json());
-
-app.get('/',(res,req) => {
-    res.send('Hi I am a chatbot');
-})
-
-app.get('/webhook/',(res,req) => {
-    if(req.query('hub.verify_token') === "texduo_cat"){
-        res.send(req.query('hub.challege'));
-    }
-    else{
-        res.send('Wrong token');
-    }
-})
-
-app.listen(app.get('port'),function(){
+app.listen(process.env.PORT || 5000),() => {
     console.log("runnning port");
-})
+}
+
+app.get('/webhook',(req,res) => {
+    let VERIFY_TOKEN = 'texduo_cat';
+    let mode = req.query['hub.mode'];
+    let token = req.query['hub.verify_token'];
+    let challenge = req.query['hub.challenge'];
+    if(mode && token){
+        if(mode === 'subscribe' && token === VERIFY_TOKEN){
+            console.log('WEBHOOK_VERIFY');
+            res.status(200).send(challenge);
+        }else{
+            res.sendStatus(403);
+        }
+    }
+});
+
+app.post('/webhook',(req,res) =>{
+    let body = req.body;
+    if (body.object === 'page'){
+        body.entry.forEach(function(entry) {
+            let webhook_event = entry.messaging[0];
+            console.log(webhook_event);
+        });
+        res.status(200).send('EVENT_RECEIVED')
+    }else{
+        res.sendStatus(404);
+    }
+});
+
