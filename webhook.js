@@ -10,7 +10,7 @@ app.listen(process.env.PORT || 5000),() => {
     console.log("runnning port");
 }
 
-app.get('/webhook',(req,res) => {
+app.get('webhook',(req,res) => {
     let VERIFY_TOKEN = 'texduo_cat';
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
@@ -25,7 +25,7 @@ app.get('/webhook',(req,res) => {
     }
 });
 
-app.post('/webhook',(req,res) =>{
+app.post('webhook',(req,res) =>{
     let body = req.body;
     if (body.object === 'page'){
         body.entry.forEach(function(entry) {
