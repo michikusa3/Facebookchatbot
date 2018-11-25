@@ -1,1 +1,1 @@
-web : node node webhook.js
+web : node webhook.js
