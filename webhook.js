@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
-app.listen(process.env.PORT || 1337),() => {
+app.listen(process.env.PORT || 5000),() => {
     console.log("runnning port");
 }
 
