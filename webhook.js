@@ -12,8 +12,10 @@ app.listen(process.env.PORT || 5000),() => {
 
 app.get('/',() => {
     console.log('WEBHOOK_VERIFY');
+    res.status(200).send('good!');
 });
 
+//'/'からGETは帰ってくるように成ったが、POSTが返ってこなくてランタイムエラー吐いてる
 app.post('/',(checkUserAuth, findApp, renderView, sendJSON) =>{
     function checkUserAuth(req, res, next) {
         if (req.session.user) return next();
