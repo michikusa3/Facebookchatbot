@@ -14,8 +14,11 @@ app.get('/',() => {
     console.log('WEBHOOK_VERIFY');
 });
 
-app.post('/',() =>{
-    res(200).send("Sorry!");
+app.post('/',(checkUserAuth, findApp, renderView, sendJSON) =>{
+    function checkUserAuth(req, res, next) {
+        if (req.session.user) return next();
+        return next(new NotAuthorizedError());
+    }
 });
 
 
