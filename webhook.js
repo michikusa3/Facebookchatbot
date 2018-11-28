@@ -15,7 +15,7 @@ app.get('/',(req,res) => {
 });
 
 app.post('/',(req,res) =>{
-    res.status(200)
+    res.sendStatus(200);
 });
 
 app.get('/webhook/',(req,res) => {
