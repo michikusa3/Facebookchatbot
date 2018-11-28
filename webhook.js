@@ -10,11 +10,11 @@ app.listen(process.env.PORT || 5000),() => {
     console.log("runnning port");
 }
 
-app.get('/',(req,res) => {
+app.get('/',() => {
     console.log('WEBHOOK_VERIFY');
 });
 
-app.post('/',(req,res) =>{
+app.post('/',(res) =>{
     res.sendStatus(200);
 });
 
