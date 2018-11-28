@@ -11,12 +11,12 @@ app.listen(process.env.PORT || 5000),() => {
 }
 
 app.get('/',(req,res) => {
-            console.log('WEBHOOK_VERIFY');
+    console.log('WEBHOOK_VERIFY');
 });
 
 app.post('/',(req,res) =>{
-        res.status(200)
-};
+    res.status(200)
+});
 
 app.get('/webhook/',(req,res) => {
     let VERIFY_TOKEN = 'texduo_cat';
