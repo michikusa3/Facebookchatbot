@@ -14,11 +14,12 @@ app.get('/',() => {
     console.log('WEBHOOK_VERIFY');
 });
 
-app.post('/',(res) =>{
-    res.sendStatus(200);
+app.post('/',() =>{
+    res(200).send("Sorry!");
 });
 
-app.get('/webhook/',(req,res) => {
+
+app.get('/webhook/',function(req,res){
     let VERIFY_TOKEN = 'texduo_cat';
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
@@ -28,12 +29,12 @@ app.get('/webhook/',(req,res) => {
             console.log('WEBHOOK_VERIFY');
             res.status(200).send(challenge);
         }else{
-            res.sendStatus(403);
+            res.send(403).send('sorry!');
         }
     }
 });
 
-app.post('/webhook/',(req,res) =>{
+app.post('/webhook/',function(req,res){
     let body = req.body;
     if (body.object === 'page'){
         body.entry.forEach(function(entry) {
@@ -42,7 +43,7 @@ app.post('/webhook/',(req,res) =>{
         });
         res.status(200).send('EVENT_RECEIVED')
     }else{
-        res.sendStatus(404);
+        res.status(404).send("Sorry!");
     }
 });
 

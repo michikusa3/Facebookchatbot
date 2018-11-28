@@ -1,1 +1,4 @@
-https://stackoverflow.com/questions/13339695/nodejs-w-express-error-cannot-get
+https://stackoverflow.com/questions/13339695/nodejs-w-express-error-cannot-get\
+
+ハマったとこ
+１facebook公式どおりに実装したら’/’からレスポンスがないためエラーになった。
