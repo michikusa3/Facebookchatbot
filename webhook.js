@@ -12,7 +12,7 @@ app.listen(process.env.PORT || 5000),() => {
 
 app.get('/',() => {
     console.log('WEBHOOK_VERIFY');
-    sendStatus(200).send('good!');
+    send(200).send('good!');
 });
 
 //'/'からGETは帰ってくるように成ったが、POSTが返ってこなくてランタイムエラー吐いてる
