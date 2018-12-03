@@ -10,9 +10,9 @@ app.listen(process.env.PORT || 5000),() => {
     console.log("runnning port");
 }
 
-app.get('/',() => {
+app.get('/',function(req,res) {
     console.log('WEBHOOK_VERIFY');
-    send(200).send('good!');
+    res.send(200);
 });
 
 //'/'からGETは帰ってくるように成ったが、POSTが返ってこなくてランタイムエラー吐いてる
