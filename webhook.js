@@ -15,14 +15,6 @@ app.get('/',function(req,res) {
     res.sendStatus(200);
 });
 
-/*//'/'からGETは帰ってくるように成ったが、POSTが返ってこなくてランタイムエラー吐いてる
-app.post('/',(checkUserAuth, findApp, renderView, sendJSON) =>{
-    function checkUserAuth(req, res, next) {
-        if (req.session.user) return next();
-        return next(new NotAuthorizedError());
-    }
-});*/
-
 
 app.get('/webhook',function(req,res){
     let VERIFY_TOKEN = 'texduo_cat';
