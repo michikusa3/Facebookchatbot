@@ -12,7 +12,7 @@ app.listen(process.env.PORT || 5000),() => {
 
 app.get('/',function(req,res) {
     console.log('WEBHOOK_VERIFY');
-    res.send(200);
+    res.sendStatus(200);
 });
 
 //'/'からGETは帰ってくるように成ったが、POSTが返ってこなくてランタイムエラー吐いてる
@@ -32,9 +32,9 @@ app.get('/webhook/',function(req,res){
     if(mode && token){
         if(mode === 'subscribe' && token === VERIFY_TOKEN){
             console.log('WEBHOOK_VERIFY');
-            res.status(200).send(challenge);
+            res.status(200).sendStatus(challenge);
         }else{
-            res.send(403).send('sorry!');
+            res.sendStatus(403).sendStatus('sorry!');
         }
     }
 });
@@ -46,9 +46,9 @@ app.post('/webhook/',function(req,res){
             let webhook_event = entry.messaging[0];
             console.log(webhook_event);
         });
-        res.status(200).send('EVENT_RECEIVED')
+        res.status(200).sendStatus('EVENT_RECEIVED')
     }else{
-        res.status(404).send("Sorry!");
+        res.status(404).sendStatus("Sorry!");
     }
 });
 
