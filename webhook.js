@@ -17,7 +17,7 @@ app.get('/',function(req,res) {
 
 
 app.get('/webhook',function(req,res){
-    let VERIFY_TOKEN = 'texduo_cat';
+    let VERIFY_TOKEN = 'EAAe68kb7wu0BAPtMp9cZA1XYGeQm5DzMHDdqxXWCMA5yrmONr8QRSfNcVslYfdJcbge7WU2VQmwlsIEaiRJuCkxHjGA8NUO5ohQs7srzkOLiHZAoRBtZCIaa1QUhbpfGITXQZBqlDRVAzvCwMjc5Ahm30mcHLb2FspeZCt5qnHDEkLF2BZANCT';
     let mode = req.query['hub.mode'];
     let token = req.query['hub.verify_token'];
     let challenge = req.query['hub.challenge'];
